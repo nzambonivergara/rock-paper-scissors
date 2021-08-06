@@ -1,0 +1,145 @@
+* {
+  margin: 0;
+}
+body {
+  font-family: Montserrat, sans-serif;
+  background-color: #dfa927;
+}
+
+.main {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* ---------MAIN GAME DASHBOARD ------------ */
+.game_dashboard {
+  background-color: #e6bb53;
+  flex-grow: 1;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.page_header {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.title {
+  margin-top: 2rem;
+  font-size: 5rem;
+  /* font-weight: 900; */
+}
+
+.game_instruction {
+  margin-top: 1rem;
+  font-size: 2rem;
+}
+
+/* ---------GAME LEVELS -------------- */
+
+.game_levels {
+  height: 100%;
+  width:100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.game_level_container {
+  background-color: #dfa927;
+  width: 20rem;
+  text-align: center;
+  font-size: 1.5rem;
+  padding: 2rem 1rem;
+  border-radius: 1rem;
+}
+
+.game_level_container:hover {
+  background-color: white;
+  color: #dfa927;
+  cursor: pointer;
+}
+
+.game_level_title {
+  margin-bottom: 1rem;
+}
+
+/* -------- PLAYER SIDEBARS --------------- */
+
+.sidebar {
+  padding: 2rem;
+  width: 10rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebar_text {
+  font-size: 2rem;
+  font-weight: 500;
+  margin: 0.5rem 0rem;
+}
+
+.sidebar_player {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.sidebar_wins {
+  font-size: 1.5rem;
+}
+
+.sidebar_icon {
+  height: 3.5rem;
+  width: 3.5rem;
+  margin: 1rem 0rem;
+}
+
+.button_change_game {
+  margin-top: 5rem;
+  height: 2.5rem;
+  width: 10rem;
+  border: 0;
+  background-color: #e3c271;
+  font-size: 1rem;
+  border-radius: 1rem;
+}
+
+.button_change_game:hover {
+  background-color: white;
+  color: #dfa927;
+  cursor: pointer;
+}
+
+/* -------GAME DISPLAY -------- */
+
+.game_board {
+  height: 100%;
+  width:100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.game_options {
+  height: 15rem;
+  width: 15rem;
+  margin: 1rem;
+}
+
+.game_options:hover {
+  cursor: pointer;
+}
+
+.game_options:active {
+  cursor: url(assets/person-gesturing-ok.png), auto;
+}
+
+.hidden {
+  display: none;
+}
