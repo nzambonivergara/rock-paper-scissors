@@ -6,7 +6,7 @@ body {
   background-color: #dfa927;
 }
 
-main {
+.main {
   display: flex;
   justify-content: space-between;
 }

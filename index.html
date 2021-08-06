@@ -10,26 +10,26 @@
   <title>Rock Paper Scissors</title>
 </head>
 <body>
-  <main>
+  <main class="main">
     <section class="sidebar human_sidebar">
       <img class="sidebar_icon" src="assets/person-gesturing-ok.png" alt="person emoji">
       <h2 class="sidebar_text sidebar_player">Human</h2>
-      <h3 class="sidebar_text sidebar_wins">Wins: <span id="human-score">0</span></h3>
-      <button class="button button_change_game hidden">CHANGE GAME?</button>
+      <h3 class="sidebar_text sidebar_wins">Wins: <span id="humanScore">0</span></h3>
+      <button class="button button_change_game hidden" id="changeGameButton">CHANGE GAME?</button>
     </section>
     <section class="section game_dashboard">
       <header class="page_header header">
         <h1 class="page_header title">Rock, Paper, Scissors</h1>
-        <h2 class="page_header game_instruction">Choose your game!</h2>
+        <h2 class="page_header game_instruction" id="gameInstructionText">Choose your game!</h2>
       </header>
-      <section class="section game_levels">
-        <article class="game_level_container classic_game">
+      <section class="section game_levels" id="gameLevelsSection">
+        <article class="game_level_container classic_game" id="classicGameOption">
           <h3 class="game_level_title">🪨 CLASSIC ✂️</h3>
           <p>rock > scissors</p>
           <p>paper > rock</p>
           <p>scissors > paper</p>
         </article>
-        <article class="game_level_container difficult_game">
+        <article class="game_level_container difficult_game" id="difficultGameOption">
           <h3 class="game_level_title">🦎 DIFFICULT 👽</h3>
           <p>rock > scissors & lizard</p>
           <p>paper > rock & alien</p>
@@ -38,12 +38,12 @@
           <p>alien > scissors & rock</p>
         </article>
       </section>
-      <article class="game_board classic_dashboard hidden">
+      <article class="game_board classic_dashboard" id="classicBoard">
         <img class="game_options" src="assets/happy-rocks.png" alt="rocks" id="rock">
         <img class="game_options" src="assets/happy-paper.png" alt="paper" id="paper">
         <img class="game_options" src="assets/happy-scissors.png" alt="scissors" id="scissors">
       </article>
-      <article class="game_board difficult_dashboard hidden">
+      <article class="game_board difficult_dashboard hidden" id="difficultBoard">
         <img class="game_options" src="assets/lizard.png" alt="lizard" id="lizard">
         <img class="game_options" src="assets/happy-alien.png" alt="alien" id="alien">
       </article>
@@ -51,7 +51,7 @@
     <section class="sidebar computer_sidebar">
       <img class="sidebar_items sidebar_icon" src="assets/female-technologist.png" alt="female technologist">
       <h2 class="sidebar_text sidebar_player">Computer</h2>
-      <h3 class="sidebar_text sidebar_wins">Wins: <span id="computer-score">0</span></h3>
+      <h3 class="sidebar_text sidebar_wins">Wins: <span id="computerScore">0</span></h3>
     </section>
   </main>
   <script src="main.js"></script>
