@@ -22,7 +22,7 @@
         <h1 class="page_header title">Rock, Paper, Scissors</h1>
         <h2 class="page_header game_instruction" id="gameInstructionText">Choose your game!</h2>
       </header>
-      <section class="section game_levels" id="gameLevelsSection">
+      <section class="section game_levels hidden" id="gameLevelsSection">
         <article class="game_level_container classic_game" id="classicGameOption">
           <h3 class="game_level_title">🪨 CLASSIC ✂️</h3>
           <p>rock > scissors</p>
@@ -38,10 +38,10 @@
           <p>alien > scissors & rock</p>
         </article>
       </section>
-      <article class="game_board classic_dashboard hidden" id="classicBoard">
-        <img class="game_options" src="assets/happy-rocks.png" alt="rocks" id="rock">
-        <img class="game_options" src="assets/happy-paper.png" alt="paper" id="paper">
-        <img class="game_options" src="assets/happy-scissors.png" alt="scissors" id="scissors">
+      <article class="game_board classic_dashboard" id="classicBoard">
+        <img class="game_options js-game_options_classic" src="assets/happy-rocks.png" alt="rocks" id="rock">
+        <img class="game_options js-game_options_classic" src="assets/happy-paper.png" alt="paper" id="paper">
+        <img class="game_options js-game_options_classic" src="assets/happy-scissors.png" alt="scissors" id="scissors">
       </article>
       <article class="game_board difficult_dashboard hidden" id="difficultBoard">
         <img class="game_options" src="assets/lizard.png" alt="lizard" id="lizard">
@@ -54,8 +54,8 @@
       <h3 class="sidebar_text sidebar_wins">Wins: <span id="computerScore">0</span></h3>
     </section>
   </main>
-  <script src="main.js"></script>
-  <script src="player.js"></script>
-  <script src="game.js"></script>
+  <script src="./player.js"></script>
+  <script src="./game.js"></script>
+  <script src="./main.js"></script>
 </body>
 </html>
