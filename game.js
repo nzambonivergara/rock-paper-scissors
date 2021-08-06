@@ -5,25 +5,37 @@ class Game {
     this.gameLevel = gameLevel;
     this.player1Score = player1.wins;
     this.player2Score = player2.wins;
+    this.fighters = [];
+
   }
 
   updateScore() {
-
+    this.player1Score = this.player1.wins;
+    this.player2Score = this.player2.wins;
   }
 
   updateGameLevel(gameLevel) {
     this.gameLevel = gameLevel;
-  }
-
-  checkWinner(player1, player2) {
-    if (player1.currentChoice > player2.currentChoice) {
-      player1.saveWinsToStorage();
-      return `${player1.token} ${player1.name} won this time around! ${player1.token}`;
-    } else if (player2.currentChoice > player1.currentChoice) {
-      player2.saveWinsToStorage();
-      return `${player1.token} ${player1.name} won this time around! ${player1.token}`;
+    if (this.gameLevel === 'classic') {
+      this.fighters = [ 'rock', 'paper', 'scissors' ];
     } else {
-      return `😭 It's a draw! 😭`;
+      this.fighters = [ 'rock', 'paper', 'scissors', 'lizard', 'alien' ];
     }
   }
+
+  checkWinner() {
+    if (this.player1.currentChoice === this.player2.currentChoice) {
+        console.log(`😭 It's a draw! 😭`);
+    } else if ((this.player1.currentChoice === 'rock' && this.player2.currentChoice === 'scissors') ||
+               (this.player1.currentChoice === 'paper' && this.player2.currentChoice === 'rock') ||
+               (this.player1.currentChoice === 'scissors' && this.player2.currentChoice === 'paper')) {
+        return this.player1.saveWinsToStorage();
+    } else if ((this.player2.currentChoice === 'rock' && this.player1.currentChoice === 'scissors') ||
+               (this.player2.currentChoice === 'paper' && this.player1.currentChoice === 'rock') ||
+               (this.player2.currentChoice === 'scissors' && this.player1.currentChoice === 'paper')) {
+        return this.player2.saveWinsToStorage();
+    }
+    this.updateScore();
+  }
+
 }
