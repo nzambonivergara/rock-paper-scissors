@@ -18,7 +18,13 @@ class Player {
     // getItem from storage
   }
 
-  takeTurn() {
+  takeTurn(gameOptions) {
+    if (this.name === 'Human') {
+      this.currentChoice = event.target.id;
+    } else {
+      this.currentChoice = gameOptions[Math.floor(Math.random() * gameOptions.length)];
+    }
+
     // choose fighter
   }
 }
