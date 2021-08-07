@@ -60,11 +60,16 @@ function chooseLevel(event) {
 
 function checkChoice() {
   if (event.target.classList.contains('game-options')) {
-    currentGame.player1.currentChoice = event.target.id;
-    currentGame.player2.currentChoice = currentGame.fighters[getRandomIndex(currentGame.fighters)];
+    humanPlayer.takeTurn()
+    computerPlayer.takeTurn(currentGame.fighters);
+    currentGame.updateScore();
+    // console.log("human: ", humanPlayer.currentChoice);
+    // console.log("computer: ", computerPlayer.currentChoice);
     return currentGame.checkWinner();
   }
+
 };
+
 
 // function checkWinner() {
 //   if (humanPlayer.currentChoice === computerPlayer.currentChoice) {
