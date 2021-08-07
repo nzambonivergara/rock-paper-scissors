@@ -8,6 +8,7 @@ class Player {
 
   saveWinsToStorage() {
     this.wins++;
+    console.log(`${this.token} ${this.name} won this time around! ${this.token}`);
     // this.retrieveWinsFromStorage()
     // update item from storage and save again
   }
