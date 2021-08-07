@@ -15,7 +15,8 @@ var resultDashboard = document.getElementById('resultDashboard');
 var changeGameButton = document.getElementById('changeGameButton');
 
 gameLevelsSection.addEventListener('click', chooseLevel);
-gamePlayground.addEventListener('click', checkChoice)
+gamePlayground.addEventListener('click', checkChoice);
+changeGameButton.addEventListener('click', showGameChoice);
 
 // FUNCTIONS
 
@@ -39,7 +40,7 @@ function showLevel(level) {
   show(gamePlayground);
   show(changeGameButton);
   gameInstructionText.innerText = 'Choose your fighter!';
-  resultDashboard.innerHTML = '';
+  // resultDashboard.innerHTML = '';
   for (var i = 0; i < gameOptions.length; i++) {
     show(gameOptions[i]);
   }
@@ -87,4 +88,10 @@ function resultTimer() {
       showResult(winnerMessage);
     }
   }, 1000);
+}
+
+function showGameChoice() {
+  hide(changeGameButton);
+  show(gameLevelsSection);
+  hide(gamePlayground);
 }
