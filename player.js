@@ -8,7 +8,7 @@ class Player {
 
   saveWinsToStorage() {
     this.wins++;
-    console.log(`${this.token} ${this.name} won this time around! ${this.token}`);
+    return `${this.token} ${this.name} won this time around! ${this.token}`;
     // this.retrieveWinsFromStorage()
     // update item from storage and save again
   }
@@ -18,13 +18,11 @@ class Player {
     // getItem from storage
   }
 
-  takeTurn(gameOptions) {
+  takeTurn(gameChoices) {
     if (this.name === 'Human') {
-      this.currentChoice = event.target.id;
+      this.currentChoice = gameChoices;
     } else {
-      this.currentChoice = gameOptions[Math.floor(Math.random() * gameOptions.length)];
+      this.currentChoice = gameChoices[Math.floor(Math.random() * gameChoices.length)];
     }
-
-    // choose fighter
   }
 }
