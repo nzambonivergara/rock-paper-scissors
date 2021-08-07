@@ -3,16 +3,16 @@ class Game {
     this.player1 = player1;
     this.player2 = player2;
     this.gameLevel = gameLevel;
-    this.player1Score = player1.wins;
-    this.player2Score = player2.wins;
+    // this.player1Score = player1.wins;
+    // this.player2Score = player2.wins;
     this.fighters = [];
 
   }
 
-  updateScore() {
-    this.player1Score = this.player1.wins;
-    this.player2Score = this.player2.wins;
-  }
+  // updateScore() {
+  //   this.player1Score = this.player1.wins;
+  //   this.player2Score = this.player2.wins;
+  // }
 
   updateGameLevel(gameLevel) {
     this.gameLevel = gameLevel;
@@ -25,7 +25,7 @@ class Game {
 
   checkWinner() {
     if (this.player1.currentChoice === this.player2.currentChoice) {
-        console.log(`😭 It's a draw! 😭`);
+        return `😭 It's a draw! 😭`;
     } else if ((this.player1.currentChoice === 'rock' && this.player2.currentChoice === 'scissors') ||
                (this.player1.currentChoice === 'rock' && this.player2.currentChoice === 'lizard') ||
                (this.player1.currentChoice === 'paper' && this.player2.currentChoice === 'rock') ||

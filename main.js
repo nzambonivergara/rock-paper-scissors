@@ -1,39 +1,23 @@
-// game rules
-// paper > rock > scissors
-// scissors > paper > rock
-// rock > scissors > paper
-
 // GLOBAL VARIABLES
-// var classicOptions = [ 'rock', 'paper', 'scissors' ];
-// var difficultOptions = [ 'rock', 'paper', 'scissors', 'lizard', 'alien' ];
 var humanPlayer =  new Player('Human', '🙆🏽');
 var computerPlayer = new Player('Computer', '👩🏻‍💻');
 var currentGame = new Game (humanPlayer, computerPlayer);
 
 // QUERY SELECTORS
-var classicGameOptions = document.querySelectorAll('.js-game-options-classic');
+var gameOptions = document.querySelectorAll('.game-options');
 var gameLevelsSection = document.getElementById('gameLevelsSection');
 var difficultLevelSelection = document.getElementById('difficultBoard');
 var gamePlayground = document.getElementById('gamePlayground');
+var gameInstructionText = document.getElementById('gameInstructionText');
+var humanScore = document.getElementById('humanScore');
+var computerScore = document.getElementById('computerScore');
+var resultDashboard = document.getElementById('resultDashboard');
+var changeGameButton = document.getElementById('changeGameButton');
 
-
-// EVENT LISTENERS
-// for (var i = 0; i < classicGameOptions.length; i++) {
-//   classicGameOptions[i].addEventListener('click', function(event) {
-//     checkChoice(event);
-//   });
-// }
-
-gameLevelsSection.addEventListener('click', function(event) {
-  chooseLevel(event);
-});
+gameLevelsSection.addEventListener('click', chooseLevel);
 gamePlayground.addEventListener('click', checkChoice)
 
 // FUNCTIONS
-
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
-};
 
 function show(element) {
   element.classList.remove('hidden');
@@ -43,16 +27,26 @@ function hide(element) {
   element.classList.add('hidden');
 };
 
-function chooseLevel(event) {
+function chooseLevel() {
   if (event.target.parentNode.classList.contains('game-level-container')) {
     hide(gameLevelsSection);
-    show(gamePlayground);
+    // gameInstructionText.innerText = 'Choose your fighter!'
+    showLevel(event.target.parentNode.id);
   }
+}
 
-  if (event.target.parentNode.id === 'classicGameOption') {
+function showLevel(level) {
+  show(gamePlayground);
+  show(changeGameButton);
+  gameInstructionText.innerText = 'Choose your fighter!';
+  resultDashboard.innerHTML = '';
+  for (var i = 0; i < gameOptions.length; i++) {
+    show(gameOptions[i]);
+  }
+  if (level === 'classicGameOption') {
     currentGame.updateGameLevel('classic')
     hide(difficultLevelSelection);
-  } else if (event.target.parentNode.id === 'difficultGameOption') {
+  } else if (level === 'difficultGameOption') {
     currentGame.updateGameLevel('difficult')
     show(difficultLevelSelection);
   }
@@ -60,39 +54,37 @@ function chooseLevel(event) {
 
 function checkChoice() {
   if (event.target.classList.contains('game-options')) {
-    humanPlayer.takeTurn()
+    humanPlayer.takeTurn(event.target.id)
     computerPlayer.takeTurn(currentGame.fighters);
-    currentGame.updateScore();
-    // console.log("human: ", humanPlayer.currentChoice);
-    // console.log("computer: ", computerPlayer.currentChoice);
-    return currentGame.checkWinner();
+    // currentGame.updateScore();
+   resultTimer();
   }
-
 };
 
+function showResult(winnerMessage) {
+  gameInstructionText.innerText = winnerMessage;
+  humanScore.innerText = humanPlayer.wins;
+  computerScore.innerText = computerPlayer.wins;
+  for (var i = 0; i < gameOptions.length; i++) {
+    if (gameOptions[i].id !== currentGame.player1.currentChoice && gameOptions[i].id !== currentGame.player2.currentChoice) {
+      hide(gameOptions[i]);
+    } else {
+      show(gameOptions[i]);
+    }
+  }
 
-// function checkWinner() {
-//   if (humanPlayer.currentChoice === computerPlayer.currentChoice) {
-//       return `😭 It's a draw! 😭`;
-//   } else if ((humanPlayer.currentChoice === 'rock' && computerPlayer.currentChoice === 'scissors') ||
-//              (humanPlayer.currentChoice === 'paper' && computerPlayer.currentChoice === 'rock') ||
-//              (humanPlayer.currentChoice === 'scissors' && computerPlayer.currentChoice === 'paper')) {
-//         return humanWins();
-//   } else if ((computerPlayer.currentChoice === 'rock' && humanPlayer.currentChoice === 'scissors') ||
-//              (computerPlayer.currentChoice === 'paper' && humanPlayer.currentChoice === 'rock') ||
-//              (computerPlayer.currentChoice === 'scissors' && humanPlayer.currentChoice === 'paper')) {
-//         return computerWins();
-//   }
-// }
-//
-// function humanWins() {
-//   humanPlayer.saveWinsToStorage();
-//   // console.log(currentGame);
-//   return `${humanPlayer.token} ${humanPlayer.name} won this time around! ${humanPlayer.token}`;
-// }
-//
-// function computerWins() {
-//   console.log(currentGame);
-//   computerPlayer.saveWinsToStorage();
-//   return `${computerPlayer.token} ${computerPlayer.name} won this time around! ${computerPlayer.token}`;
-// }
+}
+
+function resultTimer() {
+  var winnerMessage = currentGame.checkWinner()
+  var seconds = 3;
+  var countdown = setInterval(function() {
+    seconds--;
+    if (!seconds) {
+      clearInterval(countdown);
+      showLevel(currentGame.gameLevel);
+    } else {
+      showResult(winnerMessage);
+    }
+  }, 1000);
+}
