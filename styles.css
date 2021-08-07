@@ -12,7 +12,7 @@ body {
 }
 
 /* ---------MAIN GAME DASHBOARD ------------ */
-.game_dashboard {
+.game-dashboard {
   background-color: #e6bb53;
   flex-grow: 1;
   height: 100vh;
@@ -21,7 +21,7 @@ body {
   align-items: center;
 }
 
-.page_header {
+.page-header {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -33,14 +33,14 @@ body {
   /* font-weight: 900; */
 }
 
-.game_instruction {
+.game-instruction {
   margin-top: 1rem;
   font-size: 2rem;
 }
 
 /* ---------GAME LEVELS -------------- */
 
-.game_levels {
+.game-levels {
   height: 100%;
   width:100%;
   display: flex;
@@ -49,7 +49,7 @@ body {
   justify-content: space-evenly;
 }
 
-.game_level_container {
+.game-level-container {
   background-color: #dfa927;
   width: 20rem;
   text-align: center;
@@ -58,13 +58,13 @@ body {
   border-radius: 1rem;
 }
 
-.game_level_container:hover {
+.game-level-container:hover {
   background-color: white;
   color: #dfa927;
   cursor: pointer;
 }
 
-.game_level_title {
+.game-level-title {
   margin-bottom: 1rem;
 }
 
@@ -78,28 +78,28 @@ body {
   align-items: center;
 }
 
-.sidebar_text {
+.sidebar-text {
   font-size: 2rem;
   font-weight: 500;
   margin: 0.5rem 0rem;
 }
 
-.sidebar_player {
+.sidebar-player {
   font-size: 2rem;
   font-weight: 500;
 }
 
-.sidebar_wins {
+.sidebar-wins {
   font-size: 1.5rem;
 }
 
-.sidebar_icon {
+.sidebar-icon {
   height: 3.5rem;
   width: 3.5rem;
   margin: 1rem 0rem;
 }
 
-.button_change_game {
+.button-change-game {
   margin-top: 5rem;
   height: 2.5rem;
   width: 10rem;
@@ -109,7 +109,7 @@ body {
   border-radius: 1rem;
 }
 
-.button_change_game:hover {
+.button-change-game:hover {
   background-color: white;
   color: #dfa927;
   cursor: pointer;
@@ -117,7 +117,7 @@ body {
 
 /* -------GAME DISPLAY -------- */
 
-.game_board {
+.game-board {
   height: 100%;
   width:100%;
   display: flex;
@@ -126,17 +126,17 @@ body {
   flex-wrap: wrap;
 }
 
-.game_options {
+.game-options {
   height: 15rem;
   width: 15rem;
   margin: 1rem;
 }
 
-.game_options:hover {
+.game-options:hover {
   cursor: pointer;
 }
 
-.game_options:active {
+.game-options:active {
   cursor: url(assets/person-gesturing-ok.png), auto;
 }
 
