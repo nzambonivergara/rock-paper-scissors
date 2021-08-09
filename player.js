@@ -3,10 +3,17 @@ class Player {
     this.name = name;
     this.token = token;
     this.wins = 0;
+    this.currentChoice;
+  }
+
+  addWin() {
+    this.wins++;
+    return `${this.token} ${this.name} won this time around! ${this.token}`;
   }
 
   saveWinsToStorage() {
-    this.wins++;
+    // var stringifiedPlayer = JSON.stringify();
+    // localStorage.setItem()
     // this.retrieveWinsFromStorage()
     // update item from storage and save again
   }
@@ -16,7 +23,11 @@ class Player {
     // getItem from storage
   }
 
-  takeTurn() {
-    // choose fighter
+  takeTurn(gameChoices) {
+    if (this.name === 'Human') {
+      this.currentChoice = gameChoices;
+    } else {
+      this.currentChoice = gameChoices[Math.floor(Math.random() * gameChoices.length)];
+    }
   }
 }
