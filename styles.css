@@ -117,7 +117,8 @@ body {
 
 /* -------GAME DISPLAY -------- */
 
-.game-board {
+.game-board,
+.result-dashboard {
   height: 100%;
   width:100%;
   display: flex;
@@ -138,6 +139,12 @@ body {
 
 .game-options:active {
   cursor: url(assets/person-gesturing-ok.png), auto;
+}
+
+.result-dashboard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hidden {
