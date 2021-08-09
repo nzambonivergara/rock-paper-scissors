@@ -27,10 +27,9 @@ body {
   flex-direction: column;
 }
 
-.title {
+.main-title {
   margin-top: 2rem;
   font-size: 5rem;
-  /* font-weight: 900; */
 }
 
 .game-instruction {
@@ -84,11 +83,6 @@ body {
   margin: 0.5rem 0rem;
 }
 
-.sidebar-player {
-  font-size: 2rem;
-  font-weight: 500;
-}
-
 .sidebar-wins {
   font-size: 1.5rem;
 }
@@ -115,10 +109,10 @@ body {
   cursor: pointer;
 }
 
-/* -------GAME DISPLAY -------- */
+/* -------GAME CHOOSE FIGHTER DISPLAY -------- */
 
 .game-board,
-.result-dashboard {
+.result-dashboard-container {
   height: 100%;
   width:100%;
   display: flex;
@@ -127,17 +121,17 @@ body {
   flex-wrap: wrap;
 }
 
-.game-options {
+.game-fighters {
   height: 15rem;
   width: 15rem;
   margin: 1rem;
 }
 
-.game-options:hover {
+.game-fighters:hover {
   cursor: pointer;
 }
 
-.game-options:active {
+.game-fighters:active {
   cursor: url(assets/person-gesturing-ok.png), auto;
 }
 
