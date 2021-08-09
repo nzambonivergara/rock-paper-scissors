@@ -3,16 +3,12 @@ class Game {
     this.player1 = player1;
     this.player2 = player2;
     this.gameLevel;
-    // this.player1Score = player1.wins;
-    // this.player2Score = player2.wins;
     this.fighters = [];
-
   }
 
-  // updateScore() {
-  //   this.player1Score = this.player1.wins;
-  //   this.player2Score = this.player2.wins;
-  // }
+  updateScore() {
+    
+  }
 
   updateGameLevel(gameLevel) {
     this.gameLevel = gameLevel;
@@ -41,5 +37,4 @@ class Game {
         return this.player2.addWin();
     }
   }
-
 }

@@ -17,6 +17,7 @@ var computerResultDashboard = document.getElementById('computerResultDashboard')
 var changeGameButton = document.getElementById('changeGameButton');
 
 // EVENT LISTENERS
+window.addEventListener('load', updateScores);
 gameLevelsSection.addEventListener('click', chooseLevel);
 gamePlayground.addEventListener('click', checkChoice);
 changeGameButton.addEventListener('click', showGameChoice);
@@ -70,40 +71,32 @@ function checkChoice() {
   }
 };
 
-// function showResult(winnerMessage) {
-//   gameInstructionText.innerText = winnerMessage;
-//   humanScore.innerText = humanPlayer.wins;
-//   computerScore.innerText = computerPlayer.wins;
-//   for (var i = 0; i < gameOptions.length; i++) {
-//     if ((currentGame.player1.currentChoice === currentGame.player2.currentChoice) && (gameOptions[i].id === currentGame.player1.currentChoice)) {
-//       show(gameOptions[i]);
-//       resultDashboard.insertAdjacentHTML('beforeend', gameOptions[i].outerHTML);
-//     } else if (gameOptions[i].id !== currentGame.player1.currentChoice && gameOptions[i].id !== currentGame.player2.currentChoice) {
-//       hide(gameOptions[i]);
-//     } else {
-//       show(gameOptions[i]);
-//     }
-//   }
-//
-// }
-
 function showResult(winnerMessage) {
   gameInstructionText.innerText = winnerMessage;
-  humanScore.innerText = humanPlayer.wins;
-  computerScore.innerText = computerPlayer.wins;
+  updateScores();
   hide(gamePlayground);
   show(resultDashboard);
+  showPlayerChoice();
+};
+
+function updateScores() {
+  humanScore.innerText = humanPlayer.wins;
+  computerScore.innerText = computerPlayer.wins;
+}
+
+function showPlayerChoice() {
   for (var i = 0; i < gameOptions.length; i++) {
-    if ((currentGame.player1.currentChoice === currentGame.player2.currentChoice) && (gameOptions[i].id === currentGame.player1.currentChoice)) {
+    if ((currentGame.player1.currentChoice === currentGame.player2.currentChoice) &&
+        (gameOptions[i].id === currentGame.player1.currentChoice)) {
       humanResultDashboard.innerHTML = `${gameOptions[i].outerHTML}`;
       computerResultDashboard.innerHTML = `${gameOptions[i].outerHTML}`;
     } else if (gameOptions[i].id === currentGame.player1.currentChoice) {
       humanResultDashboard.innerHTML = `${gameOptions[i].outerHTML}`;
     } else if (gameOptions[i].id === currentGame.player2.currentChoice) {
       computerResultDashboard.innerHTML = `${gameOptions[i].outerHTML}`;
+    }
   }
-}
-}
+};
 
 
 function resultTimer() {
@@ -119,11 +112,11 @@ function resultTimer() {
       showResult(winnerMessage);
     }
   }, 1000);
-}
+};
 
 function showGameChoice() {
   hide(changeGameButton);
   show(gameLevelsSection);
   hide(gamePlayground);
   gameInstructionText.innerText = 'Choose your game!'
-}
+};
