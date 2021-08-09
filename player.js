@@ -6,9 +6,14 @@ class Player {
     this.currentChoice;
   }
 
-  saveWinsToStorage() {
+  addWin() {
     this.wins++;
     return `${this.token} ${this.name} won this time around! ${this.token}`;
+  }
+
+  saveWinsToStorage() {
+    // var stringifiedPlayer = JSON.stringify();
+    // localStorage.setItem()
     // this.retrieveWinsFromStorage()
     // update item from storage and save again
   }

@@ -1,8 +1,8 @@
 class Game {
-  constructor(player1, player2, gameLevel) {
+  constructor(player1, player2) {
     this.player1 = player1;
     this.player2 = player2;
-    this.gameLevel = gameLevel;
+    this.gameLevel;
     // this.player1Score = player1.wins;
     // this.player2Score = player2.wins;
     this.fighters = [];
@@ -36,9 +36,9 @@ class Game {
                (this.player1.currentChoice === 'lizard' && this.player2.currentChoice === 'alien') ||
                (this.player1.currentChoice === 'alien' && this.player2.currentChoice === 'scissors') ||
                (this.player1.currentChoice === 'alien' && this.player2.currentChoice === 'rock')) {
-        return this.player1.saveWinsToStorage();
+        return this.player1.addWin();
     } else {
-        return this.player2.saveWinsToStorage();
+        return this.player2.addWin();
     }
   }
 
