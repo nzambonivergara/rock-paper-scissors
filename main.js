@@ -6,12 +6,12 @@ var currentGame = new Game (humanPlayer, computerPlayer);
 // QUERY SELECTORS
 var gamePlayground = document.getElementById('gamePlayground');
 var gameInstructionText = document.getElementById('gameInstructionText');
-var gameOptions = document.querySelectorAll('.game-options');
+var gameFighters = document.querySelectorAll('.game-fighters');
 var gameLevelsSection = document.getElementById('gameLevelsSection');
 var difficultLevelSelection = document.getElementById('difficultBoard');
 var humanScore = document.getElementById('humanScore');
 var computerScore = document.getElementById('computerScore');
-var resultDashboard = document.getElementById('resultDashboard');
+var resultDashboardContainer = document.getElementById('resultDashboardContainer');
 var humanResultDashboard = document.getElementById('humanResultDashboard');
 var computerResultDashboard = document.getElementById('computerResultDashboard');
 var changeGameButton = document.getElementById('changeGameButton');
@@ -19,8 +19,8 @@ var changeGameButton = document.getElementById('changeGameButton');
 // EVENT LISTENERS
 window.addEventListener('load', updateScores);
 gameLevelsSection.addEventListener('click', chooseLevel);
-gamePlayground.addEventListener('click', checkChoice);
-changeGameButton.addEventListener('click', showGameChoice);
+gamePlayground.addEventListener('click', checkFighterChoice);
+changeGameButton.addEventListener('click', showGameLevelsScreen);
 
 // FUNCTIONS
 
@@ -35,18 +35,18 @@ function hide(element) {
 function chooseLevel() {
   if (event.target.parentNode.classList.contains('game-level-container')) {
     hide(gameLevelsSection);
-    showLevel(event.target.parentNode.id);
+    showChooseFighterScreen(event.target.parentNode.id);
   }
 }
 
-function showLevel(level) {
+function showChooseFighterScreen(level) {
   show(gamePlayground);
   show(changeGameButton);
-  hide(resultDashboard);
+  hide(resultDashboardContainer);
+  showGameFighters();
   gameInstructionText.innerText = 'Choose your fighter!';
   humanResultDashboard.innerHTML = '';
   computerResultDashboard.innerHTML = '';
-  showGameOptions();
   if (level === 'classicGameOption') {
     currentGame.updateGameLevel('classic')
     hide(difficultLevelSelection);
@@ -56,18 +56,17 @@ function showLevel(level) {
   }
 }
 
-function showGameOptions() {
-  for (var i = 0; i < gameOptions.length; i++) {
-    show(gameOptions[i]);
+function showGameFighters() {
+  for (var i = 0; i < gameFighters.length; i++) {
+    show(gameFighters[i]);
   }
 }
 
-function checkChoice() {
-  if (event.target.classList.contains('game-options')) {
+function checkFighterChoice() {
+  if (event.target.classList.contains('game-fighters')) {
     humanPlayer.takeTurn(event.target.id)
     computerPlayer.takeTurn(currentGame.fighters);
-    // currentGame.updateScore();
-   resultTimer();
+    displayResultWithTimer();
   }
 };
 
@@ -75,8 +74,8 @@ function showResult(winnerMessage) {
   gameInstructionText.innerText = winnerMessage;
   updateScores();
   hide(gamePlayground);
-  show(resultDashboard);
-  showPlayerChoice();
+  show(resultDashboardContainer);
+  showPlayerFighterChoice();
 };
 
 function updateScores() {
@@ -84,37 +83,35 @@ function updateScores() {
   computerScore.innerText = computerPlayer.wins;
 }
 
-function showPlayerChoice() {
-  for (var i = 0; i < gameOptions.length; i++) {
-    if ((currentGame.player1.currentChoice === currentGame.player2.currentChoice) &&
-        (gameOptions[i].id === currentGame.player1.currentChoice)) {
-      humanResultDashboard.innerHTML = `${gameOptions[i].outerHTML}`;
-      computerResultDashboard.innerHTML = `${gameOptions[i].outerHTML}`;
-    } else if (gameOptions[i].id === currentGame.player1.currentChoice) {
-      humanResultDashboard.innerHTML = `${gameOptions[i].outerHTML}`;
-    } else if (gameOptions[i].id === currentGame.player2.currentChoice) {
-      computerResultDashboard.innerHTML = `${gameOptions[i].outerHTML}`;
+function showPlayerFighterChoice() {
+  for (var i = 0; i < gameFighters.length; i++) {
+    if ((humanPlayer.currentChoice === computerPlayer.currentChoice) && (gameFighters[i].id === humanPlayer.currentChoice)) {
+      humanResultDashboard.innerHTML = `${gameFighters[i].outerHTML}`;
+      computerResultDashboard.innerHTML = `${gameFighters[i].outerHTML}`;
+    } else if (gameFighters[i].id === humanPlayer.currentChoice) {
+      humanResultDashboard.innerHTML = `${gameFighters[i].outerHTML}`;
+    } else if (gameFighters[i].id === computerPlayer.currentChoice) {
+      computerResultDashboard.innerHTML = `${gameFighters[i].outerHTML}`;
     }
   }
 };
 
 
-function resultTimer() {
+function displayResultWithTimer() {
   var winnerMessage = currentGame.checkWinner()
   var seconds = 3;
   var countdown = setInterval(function() {
     seconds--;
-
     if (!seconds) {
       clearInterval(countdown);
-      showLevel(currentGame.gameLevel);
+      showChooseFighterScreen(currentGame.gameLevel);
     } else {
       showResult(winnerMessage);
     }
   }, 1000);
 };
 
-function showGameChoice() {
+function showGameLevelsScreen() {
   hide(changeGameButton);
   show(gameLevelsSection);
   hide(gamePlayground);

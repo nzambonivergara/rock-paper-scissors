@@ -12,14 +12,14 @@
 <body>
   <main class="main">
     <section class="sidebar human-sidebar">
-      <img class="sidebar-icon" src="assets/person-gesturing-ok.png" alt="person emoji">
+      <img class="sidebar-icon" src="assets/person-gesturing-ok.png" alt="person icon">
       <h2 class="sidebar-text sidebar-player">Human</h2>
       <p class="sidebar-text sidebar-wins">Wins: <span id="humanScore">0</span></p>
       <button class="button button-change-game hidden" id="changeGameButton">CHANGE GAME?</button>
     </section>
     <section class="game-dashboard">
-      <header class="page-header header">
-        <h1 class="page-header title">Rock, Paper, Scissors</h1>
+      <header class="page-header">
+        <h1 class="page-header main-title">Rock, Paper, Scissors</h1>
         <h2 class="page-header game-instruction" id="gameInstructionText">Choose your game!</h2>
       </header>
       <section class="game-levels" id="gameLevelsSection">
@@ -40,22 +40,22 @@
       </section>
       <section class="game-board hidden" id="gamePlayground">
         <article class="game-playground classic-dashboard" id="classicBoard">
-          <img class="game-options js-game-options-classic" src="assets/happy-rocks.png" alt="rock" id="rock">
-          <img class="game-options js-game-options-classic" src="assets/happy-paper.png" alt="paper" id="paper">
-          <img class="game-options js-game-options-classic" src="assets/happy-scissors.png" alt="scissors" id="scissors">
+          <img class="game-fighters" src="assets/happy-rocks.png" alt="rock" id="rock">
+          <img class="game-fighters" src="assets/happy-paper.png" alt="paper" id="paper">
+          <img class="game-fighters" src="assets/happy-scissors.png" alt="scissors" id="scissors">
         </article>
         <article class="game-playground difficult-dashboard" id="difficultBoard">
-          <img class="game-options" src="assets/lizard.png" alt="lizard" id="lizard">
-          <img class="game-options" src="assets/happy-alien.png" alt="alien" id="alien">
+          <img class="game-fighters" src="assets/lizard.png" alt="lizard" id="lizard">
+          <img class="game-fighters" src="assets/happy-alien.png" alt="alien" id="alien">
         </article>
       </section>
-      <section class="result-dashboard hidden" id="resultDashboard">
+      <section class="result-dashboard-container hidden" id="resultDashboardContainer">
         <article class="human-result-dashboard" id="humanResultDashboard"></article>
         <article class="computer-result-dashboard" id="computerResultDashboard"></article>
       </section>
     </section>
     <section class="sidebar computer-sidebar">
-      <img class="sidebar-items sidebar-icon" src="assets/female-technologist.png" alt="female technologist">
+      <img class="sidebar-icon" src="assets/female-technologist.png" alt="computer icon">
       <h2 class="sidebar-text sidebar-player">Computer</h2>
       <p class="sidebar-text sidebar-wins">Wins: <span id="computerScore">0</span></p>
     </section>
