@@ -141,12 +141,6 @@ body {
   cursor: url(assets/person-gesturing-ok.png), auto;
 }
 
-.result-dashboard {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .hidden {
   display: none;
 }

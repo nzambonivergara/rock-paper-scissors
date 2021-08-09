@@ -2,25 +2,23 @@ class Player {
   constructor(name, token) {
     this.name = name;
     this.token = token;
-    this.wins = 0;
+    this.wins = JSON.parse(localStorage.getItem(`Player: ${this.name}`)) || 0;
     this.currentChoice;
   }
 
   addWin() {
     this.wins++;
+    this.saveWinsToStorage();
     return `${this.token} ${this.name} won this time around! ${this.token}`;
   }
 
   saveWinsToStorage() {
-    // var stringifiedPlayer = JSON.stringify();
-    // localStorage.setItem()
-    // this.retrieveWinsFromStorage()
-    // update item from storage and save again
+    localStorage.setItem(`Player: ${this.name}`, this.wins);
   }
 
   retrieveWinsFromStorage() {
-    this.wins = 0;
-    // getItem from storage
+      var storedPlayer = JSON.parse(localStorage.getItem(`Player: ${this.name}`));
+      return storedPlayer;
   }
 
   takeTurn(gameChoices) {
