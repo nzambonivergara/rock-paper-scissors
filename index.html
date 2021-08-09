@@ -14,15 +14,15 @@
     <section class="sidebar human-sidebar">
       <img class="sidebar-icon" src="assets/person-gesturing-ok.png" alt="person emoji">
       <h2 class="sidebar-text sidebar-player">Human</h2>
-      <h3 class="sidebar-text sidebar-wins">Wins: <span id="humanScore">0</span></h3>
+      <p class="sidebar-text sidebar-wins">Wins: <span id="humanScore">0</span></p>
       <button class="button button-change-game hidden" id="changeGameButton">CHANGE GAME?</button>
     </section>
-    <section class="section game-dashboard">
+    <section class="game-dashboard">
       <header class="page-header header">
         <h1 class="page-header title">Rock, Paper, Scissors</h1>
         <h2 class="page-header game-instruction" id="gameInstructionText">Choose your game!</h2>
       </header>
-      <section class="section game-levels" id="gameLevelsSection">
+      <section class="game-levels" id="gameLevelsSection">
         <article class="game-level-container classic-game" id="classicGameOption">
           <h3 class="game-level-title">🪨 CLASSIC ✂️</h3>
           <p>rock > scissors</p>
@@ -40,7 +40,7 @@
       </section>
       <section class="game-board hidden" id="gamePlayground">
         <article class="game-playground classic-dashboard" id="classicBoard">
-          <img class="game-options js-game-options-classic" src="assets/happy-rocks.png" alt="rocks" id="rock">
+          <img class="game-options js-game-options-classic" src="assets/happy-rocks.png" alt="rock" id="rock">
           <img class="game-options js-game-options-classic" src="assets/happy-paper.png" alt="paper" id="paper">
           <img class="game-options js-game-options-classic" src="assets/happy-scissors.png" alt="scissors" id="scissors">
         </article>
@@ -49,12 +49,15 @@
           <img class="game-options" src="assets/happy-alien.png" alt="alien" id="alien">
         </article>
       </section>
-      <article class="result-dashboard" id="resultDashboard"></article>
+      <section class="result-dashboard hidden" id="resultDashboard">
+        <article class="human-result-dashboard" id="humanResultDashboard"></article>
+        <article class="computer-result-dashboard" id="computerResultDashboard"></article>
+      </section>
     </section>
     <section class="sidebar computer-sidebar">
       <img class="sidebar-items sidebar-icon" src="assets/female-technologist.png" alt="female technologist">
       <h2 class="sidebar-text sidebar-player">Computer</h2>
-      <h3 class="sidebar-text sidebar-wins">Wins: <span id="computerScore">0</span></h3>
+      <p class="sidebar-text sidebar-wins">Wins: <span id="computerScore">0</span></p>
     </section>
   </main>
   <script src="./player.js"></script>
