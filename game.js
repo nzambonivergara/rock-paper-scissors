@@ -6,10 +6,6 @@ class Game {
     this.fighters = [];
   }
 
-  updateScore() {
-    
-  }
-
   updateGameLevel(gameLevel) {
     this.gameLevel = gameLevel;
     if (this.gameLevel === 'classic') {
@@ -22,16 +18,11 @@ class Game {
   checkWinner() {
     if (this.player1.currentChoice === this.player2.currentChoice) {
         return `😭 It's a draw! 😭`;
-    } else if ((this.player1.currentChoice === 'rock' && this.player2.currentChoice === 'scissors') ||
-               (this.player1.currentChoice === 'rock' && this.player2.currentChoice === 'lizard') ||
-               (this.player1.currentChoice === 'paper' && this.player2.currentChoice === 'rock') ||
-               (this.player1.currentChoice === 'paper' && this.player2.currentChoice === 'alien') ||
-               (this.player1.currentChoice === 'scissors' && this.player2.currentChoice === 'paper') ||
-               (this.player1.currentChoice === 'scissors' && this.player2.currentChoice === 'lizard') ||
-               (this.player1.currentChoice === 'lizard' && this.player2.currentChoice === 'paper') ||
-               (this.player1.currentChoice === 'lizard' && this.player2.currentChoice === 'alien') ||
-               (this.player1.currentChoice === 'alien' && this.player2.currentChoice === 'scissors') ||
-               (this.player1.currentChoice === 'alien' && this.player2.currentChoice === 'rock')) {
+    } else if ((this.player1.currentChoice === 'rock' && (this.player2.currentChoice === 'scissors' || this.player2.currentChoice === 'lizard')) ||
+               (this.player1.currentChoice === 'paper' && (this.player2.currentChoice === 'rock' || this.player2.currentChoice === 'alien')) ||
+               (this.player1.currentChoice === 'scissors' && (this.player2.currentChoice === 'paper' || this.player2.currentChoice === 'lizard')) ||
+               (this.player1.currentChoice === 'lizard' && (this.player2.currentChoice === 'paper' || this.player2.currentChoice === 'alien')) ||
+               (this.player1.currentChoice === 'alien' && (this.player2.currentChoice === 'scissors' || this.player2.currentChoice === 'rock'))) {
         return this.player1.addWin();
     } else {
         return this.player2.addWin();
