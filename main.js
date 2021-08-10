@@ -2,6 +2,7 @@
 var humanPlayer =  new Player('Human', '🙆🏽');
 var computerPlayer = new Player('Computer', '👩🏻‍💻');
 var currentGame = new Game (humanPlayer, computerPlayer);
+var countdown;
 
 // QUERY SELECTORS
 var gamePlayground = document.getElementById('gamePlayground');
@@ -100,13 +101,15 @@ function showPlayerFighterChoice() {
       computerResultDashboard.innerHTML = `${gameFighters[i].outerHTML}`;
     }
   }
+  humanResultDashboard.classList.add('game-fighters-disable');
+  computerResultDashboard.classList.add('game-fighters-disable');
 };
 
 
 function displayResultWithTimer() {
   var winnerMessage = currentGame.checkWinner()
   var seconds = 3;
-  var countdown = setInterval(function() {
+  countdown = setInterval(function() {
     seconds--;
     if (!seconds) {
       clearInterval(countdown);
@@ -118,6 +121,8 @@ function displayResultWithTimer() {
 };
 
 function showGameLevelsScreen() {
+  clearTimeout(countdown);
+  hide(resultDashboardContainer);
   hide(changeGameButton);
   show(gameLevelsSection);
   hide(gamePlayground);
