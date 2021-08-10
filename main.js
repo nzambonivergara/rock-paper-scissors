@@ -2,6 +2,7 @@
 var humanPlayer =  new Player('Human', '🙆🏽');
 var computerPlayer = new Player('Computer', '👩🏻‍💻');
 var currentGame = new Game (humanPlayer, computerPlayer);
+var countdown;
 
 // QUERY SELECTORS
 var gamePlayground = document.getElementById('gamePlayground');
@@ -15,12 +16,14 @@ var resultDashboardContainer = document.getElementById('resultDashboardContainer
 var humanResultDashboard = document.getElementById('humanResultDashboard');
 var computerResultDashboard = document.getElementById('computerResultDashboard');
 var changeGameButton = document.getElementById('changeGameButton');
+var resetScoreButton = document.getElementById('resetScoreButton');
 
 // EVENT LISTENERS
 window.addEventListener('load', updateScores);
 gameLevelsSection.addEventListener('click', chooseLevel);
 gamePlayground.addEventListener('click', checkFighterChoice);
 changeGameButton.addEventListener('click', showGameLevelsScreen);
+resetScoreButton.addEventListener('click', resetPlayerScores);
 
 // FUNCTIONS
 
@@ -67,6 +70,7 @@ function checkFighterChoice() {
     humanPlayer.takeTurn(event.target.id)
     computerPlayer.takeTurn(currentGame.fighters);
     displayResultWithTimer();
+    show(resetScoreButton);
   }
 };
 
@@ -81,6 +85,9 @@ function showResult(winnerMessage) {
 function updateScores() {
   humanScore.innerText = humanPlayer.wins;
   computerScore.innerText = computerPlayer.wins;
+  if (humanPlayer.wins || computerPlayer.wins) {
+    show(resetScoreButton);
+  }
 }
 
 function showPlayerFighterChoice() {
@@ -94,13 +101,15 @@ function showPlayerFighterChoice() {
       computerResultDashboard.innerHTML = `${gameFighters[i].outerHTML}`;
     }
   }
+  humanResultDashboard.classList.add('game-fighters-disable');
+  computerResultDashboard.classList.add('game-fighters-disable');
 };
 
 
 function displayResultWithTimer() {
   var winnerMessage = currentGame.checkWinner()
   var seconds = 3;
-  var countdown = setInterval(function() {
+  countdown = setInterval(function() {
     seconds--;
     if (!seconds) {
       clearInterval(countdown);
@@ -112,8 +121,16 @@ function displayResultWithTimer() {
 };
 
 function showGameLevelsScreen() {
+  clearTimeout(countdown);
+  hide(resultDashboardContainer);
   hide(changeGameButton);
   show(gameLevelsSection);
   hide(gamePlayground);
   gameInstructionText.innerText = 'Choose your game!'
 };
+
+function resetPlayerScores() {
+  currentGame.resetScore();
+  updateScores();
+  hide(resetScoreButton);
+}

@@ -93,7 +93,7 @@ body {
   margin: 1rem 0rem;
 }
 
-.button-change-game {
+.button {
   margin-top: 5rem;
   height: 2.5rem;
   width: 10rem;
@@ -103,7 +103,7 @@ body {
   border-radius: 1rem;
 }
 
-.button-change-game:hover {
+.button:hover {
   background-color: white;
   color: #dfa927;
   cursor: pointer;
@@ -129,6 +129,11 @@ body {
 
 .game-fighters:hover {
   cursor: pointer;
+  height: 18rem;
+  width: 18rem;
+}
+.game-fighters-disable {
+  pointer-events: none;
 }
 
 .game-fighters:active {
