@@ -20,6 +20,11 @@ class Player {
     return JSON.parse(localStorage.getItem(`Player: ${this.name}`));
   }
 
+  resetWinsFromStorage() {
+    this.wins = 0;
+    this.saveWinsToStorage();
+  }
+
   takeTurn(gameChoices) {
     if (this.name === 'Human') {
       this.currentChoice = gameChoices;

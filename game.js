@@ -28,4 +28,9 @@ class Game {
         return this.player2.addWin();
     }
   }
+
+  resetScore() {
+    this.player1.resetWinsFromStorage();
+    this.player2.resetWinsFromStorage();
+  }
 }
