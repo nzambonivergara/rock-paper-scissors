@@ -18,8 +18,12 @@ Rock, Paper, Scissors requires no installation. All features are contained withi
   - The score will get updated.
 - Click the change game button to choose a different level.
   - The score for each player will persist, even after page load.
+- The user can reset the score at any point by clicking the reset score button.
 
 ![Rock Paper Scissors in Action](https://user-images.githubusercontent.com/83611094/128779181-a9eb40c5-9fff-4a1e-a097-60d4b98384ca.gif)
+
+![Score reset](https://user-images.githubusercontent.com/83611094/128955359-ddbc5c9e-9ec4-4c13-b9b3-295046f55f56.gif)
+
 
 ## Programming Languages and Dependencies
 
