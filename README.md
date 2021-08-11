@@ -1,6 +1,6 @@
 # Rock, Paper, Scissors Overview
 
-This Rock, Paper, Scissors game, allows the user to play a classic or difficult game of roshambo. It was built utilizing HTML, CSS, and JavaScript. The game data persists upon page load utilizing localStorage to persist data.
+This Rock, Paper, Scissors game, allows the user to play a classic or difficult game of roshambo. It was built utilizing HTML, CSS, and JavaScript. The game data persists upon page load utilizing localStorage.
 
 ## Installation
 
