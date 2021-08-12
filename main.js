@@ -40,16 +40,13 @@ function chooseLevel() {
     hide(gameLevelsSection);
     showChooseFighterScreen(event.target.parentNode.id);
   }
-}
+};
 
 function showChooseFighterScreen(level) {
   show(gamePlayground);
   show(changeGameButton);
   hide(resultDashboardContainer);
-  showGameFighters();
   gameInstructionText.innerText = 'Choose your fighter!';
-  humanResultDashboard.innerHTML = '';
-  computerResultDashboard.innerHTML = '';
   if (level === 'classicGameOption') {
     currentGame.updateGameLevel('classic')
     hide(difficultLevelSelection);
@@ -57,25 +54,20 @@ function showChooseFighterScreen(level) {
     currentGame.updateGameLevel('difficult')
     show(difficultLevelSelection);
   }
-}
-
-function showGameFighters() {
-  for (var i = 0; i < gameFighters.length; i++) {
-    show(gameFighters[i]);
-  }
-}
+};
 
 function checkFighterChoice() {
   if (event.target.classList.contains('game-fighters')) {
     humanPlayer.takeTurn(event.target.id)
     computerPlayer.takeTurn(currentGame.fighters);
-    displayResultWithTimer();
+    showResult();
     show(resetScoreButton);
+    countdown = setTimeout(function () {showChooseFighterScreen(currentGame.gameLevel)}, 2 * 1000);
   }
 };
 
-function showResult(winnerMessage) {
-  gameInstructionText.innerText = winnerMessage;
+function showResult() {
+  gameInstructionText.innerText = currentGame.checkWinner();
   updateScores();
   hide(gamePlayground);
   show(resultDashboardContainer);
@@ -91,34 +83,15 @@ function updateScores() {
 }
 
 function showPlayerFighterChoice() {
-  for (var i = 0; i < gameFighters.length; i++) {
-    if ((humanPlayer.currentChoice === computerPlayer.currentChoice) && (gameFighters[i].id === humanPlayer.currentChoice)) {
-      humanResultDashboard.innerHTML = `${gameFighters[i].outerHTML}`;
-      computerResultDashboard.innerHTML = `${gameFighters[i].outerHTML}`;
-    } else if (gameFighters[i].id === humanPlayer.currentChoice) {
-      humanResultDashboard.innerHTML = `${gameFighters[i].outerHTML}`;
-    } else if (gameFighters[i].id === computerPlayer.currentChoice) {
-      computerResultDashboard.innerHTML = `${gameFighters[i].outerHTML}`;
-    }
-  }
+  var humanPlayerChoice = document.getElementById(`${humanPlayer.currentChoice}`);
+  var computerPlayerChoice = document.getElementById(`${computerPlayer.currentChoice}`);
+  humanResultDashboard.innerHTML = '';
+  computerResultDashboard.innerHTML = '';
+  humanResultDashboard.append(humanPlayerChoice.cloneNode());
+  computerResultDashboard.append(computerPlayerChoice.cloneNode());
   humanResultDashboard.classList.add('game-fighters-disable');
   computerResultDashboard.classList.add('game-fighters-disable');
-};
-
-
-function displayResultWithTimer() {
-  var winnerMessage = currentGame.checkWinner()
-  var seconds = 3;
-  countdown = setInterval(function() {
-    seconds--;
-    if (!seconds) {
-      clearInterval(countdown);
-      showChooseFighterScreen(currentGame.gameLevel);
-    } else {
-      showResult(winnerMessage);
-    }
-  }, 1000);
-};
+}
 
 function showGameLevelsScreen() {
   clearTimeout(countdown);
