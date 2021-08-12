@@ -40,17 +40,17 @@ The application consists of one HTML page, a CSS file, and three JavaScript file
 
 1. A player.js file that contains a Player class.
 Player methods include:
-  - constructor with the following properties: name (ex: 'Human'), token (ex: '🙆'), wins (ex: 0), and currentChoice (ex: 'rock');
-  - addWins
-  - saveWinsToStorage
-  - retrieveWinsFromStorage
-  - takeTurn
+    - constructor with the following properties: name (ex: 'Human'), token (ex: '🙆'), wins (ex: 0), and currentChoice (ex: 'rock');
+    - addWins
+    - saveWinsToStorage
+    - retrieveWinsFromStorage
+    - takeTurn
 
 1. A game.js file that contains a Game class. Game methods include:
-  - constructor with the following properties: player1, player2, gameLevel (ex: 'classic'), and fighters (ex: ['rock', 'paper', 'scissors']).
-  - updateGameLevel
-  - checkWinner
-  - resetScore
+    - constructor with the following properties: player1, player2, gameLevel (ex: 'classic'), and fighters (ex: ['rock', 'paper', 'scissors']).
+    - updateGameLevel
+    - checkWinner
+    - resetScore
 
 1. A main.js file that contains all DOM related JavaScript.
 
