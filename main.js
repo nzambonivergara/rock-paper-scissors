@@ -13,8 +13,6 @@ var difficultLevelSelection = document.getElementById('difficultBoard');
 var humanScore = document.getElementById('humanScore');
 var computerScore = document.getElementById('computerScore');
 var resultDashboardContainer = document.getElementById('resultDashboardContainer');
-var humanResultDashboard = document.getElementById('humanResultDashboard');
-var computerResultDashboard = document.getElementById('computerResultDashboard');
 var changeGameButton = document.getElementById('changeGameButton');
 var resetScoreButton = document.getElementById('resetScoreButton');
 
@@ -29,18 +27,18 @@ resetScoreButton.addEventListener('click', resetPlayerScores);
 
 function show(element) {
   element.classList.remove('hidden');
-};
+}
 
 function hide(element) {
   element.classList.add('hidden');
-};
+}
 
 function chooseLevel() {
   if (event.target.parentNode.classList.contains('game-level-container')) {
     hide(gameLevelsSection);
     showChooseFighterScreen(event.target.parentNode.id);
   }
-};
+}
 
 function showChooseFighterScreen(level) {
   show(gamePlayground);
@@ -54,7 +52,7 @@ function showChooseFighterScreen(level) {
     currentGame.updateGameLevel('difficult')
     show(difficultLevelSelection);
   }
-};
+}
 
 function checkFighterChoice() {
   if (event.target.classList.contains('game-fighters')) {
@@ -62,9 +60,11 @@ function checkFighterChoice() {
     computerPlayer.takeTurn(currentGame.fighters);
     showResult();
     show(resetScoreButton);
-    countdown = setTimeout(function () {showChooseFighterScreen(currentGame.gameLevel)}, 2 * 1000);
+    countdown = setTimeout(function () {
+      showChooseFighterScreen(currentGame.gameLevel)
+    }, 2 * 1000);
   }
-};
+}
 
 function showResult() {
   gameInstructionText.innerText = currentGame.checkWinner();
@@ -85,12 +85,9 @@ function updateScores() {
 function showPlayerFighterChoice() {
   var humanPlayerChoice = document.getElementById(`${humanPlayer.currentChoice}`);
   var computerPlayerChoice = document.getElementById(`${computerPlayer.currentChoice}`);
-  humanResultDashboard.innerHTML = '';
-  computerResultDashboard.innerHTML = '';
-  humanResultDashboard.append(humanPlayerChoice.cloneNode());
-  computerResultDashboard.append(computerPlayerChoice.cloneNode());
-  humanResultDashboard.classList.add('game-fighters-disable');
-  computerResultDashboard.classList.add('game-fighters-disable');
+  resultDashboardContainer.innerHTML = '';
+  resultDashboardContainer.append(humanPlayerChoice.cloneNode(), computerPlayerChoice.cloneNode());
+  resultDashboardContainer.classList.add('game-fighters-disable');
 }
 
 function showGameLevelsScreen() {
@@ -100,7 +97,7 @@ function showGameLevelsScreen() {
   show(gameLevelsSection);
   hide(gamePlayground);
   gameInstructionText.innerText = 'Choose your game!'
-};
+}
 
 function resetPlayerScores() {
   currentGame.resetScore();
