@@ -7,12 +7,12 @@ var countdown;
 // QUERY SELECTORS
 var gamePlayground = document.getElementById('gamePlayground');
 var gameInstructionText = document.getElementById('gameInstructionText');
-var gameFighters = document.querySelectorAll('.game-fighters');
 var gameLevelsSection = document.getElementById('gameLevelsSection');
 var difficultLevelSelection = document.getElementById('difficultBoard');
 var humanScore = document.getElementById('humanScore');
 var computerScore = document.getElementById('computerScore');
-var resultDashboardContainer = document.getElementById('resultDashboardContainer');
+var resultDashboardContainer =
+document.getElementById('resultDashboardContainer');
 var changeGameButton = document.getElementById('changeGameButton');
 var resetScoreButton = document.getElementById('resetScoreButton');
 
@@ -72,7 +72,7 @@ function showResult() {
   hide(gamePlayground);
   show(resultDashboardContainer);
   showPlayerFighterChoice();
-};
+}
 
 function updateScores() {
   humanScore.innerText = humanPlayer.wins;
@@ -83,10 +83,14 @@ function updateScores() {
 }
 
 function showPlayerFighterChoice() {
-  var humanPlayerChoice = document.getElementById(`${humanPlayer.currentChoice}`);
-  var computerPlayerChoice = document.getElementById(`${computerPlayer.currentChoice}`);
+  var humanPlayerChoice =
+  document.getElementById(`${humanPlayer.currentChoice}`);
+  var computerPlayerChoice =
+  document.getElementById(`${computerPlayer.currentChoice}`);
   resultDashboardContainer.innerHTML = '';
-  resultDashboardContainer.append(humanPlayerChoice.cloneNode(), computerPlayerChoice.cloneNode());
+  resultDashboardContainer.append(
+    humanPlayerChoice.cloneNode(), computerPlayerChoice.cloneNode()
+  );
   resultDashboardContainer.classList.add('game-fighters-disable');
 }
 
