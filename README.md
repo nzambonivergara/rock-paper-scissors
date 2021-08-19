@@ -6,7 +6,7 @@ This Rock, Paper, Scissors game, allows the user to play a classic or difficult 
 
 Rock, Paper, Scissors requires no installation. All features are contained within the web app, which leverages local storage to keep track of the user's activities across visits.
 
-[Click here to access Rock, Paper, Scissors.](https://github.com/nzambonivergara/rock-paper-scissors)
+[Click here to access Rock, Paper, Scissors.](https://nzambonivergara.github.io/rock-paper-scissors/)
 
 ## Usage and Demonstration
 
